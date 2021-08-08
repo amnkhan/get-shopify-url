@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- google webfonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet"> 
+    <!-- font awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- main styles -->
+    <style>
+        html, body {
+            font-family: "Roboto Mono", monospace;
+            font-size: 12px;
+            margin: 0;
+            padding: 0;
+            width: 280px;
+            min-height: 100px;
+            background-color: #1C1C1E;
+        }
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .wrapper p {
+            color: #fff;
+            font-weight: 400;
+            padding: 6px;
+            margin: 0;
+            border-radius: 5px;
+            margin-bottom: 12px;
+        }
+        .general-message {
+            display: none;
+        }
+        .shopify-info {
+            display: none;
+            margin-top: 15px;
+        }
+    </style>
+
+    <title>Get Shopify URL</title>
+</head>
+<body>
+    <!-- main wrapper -->
+    <div class="wrapper">
+        <div class="general-message">
+            <p>Sorry not a Shoipy website!</p>
+        </div>
+        <div class="shopify-info">
+            <p class="shop-url">example.myshopify.com</p>
+            <p class="shop-theme">Gourgeous theme name</p>
+        </div>
+    </div>
+    <!-- popup script -->
+    <script src="popup.js"></script>
+</body>
+</html>
