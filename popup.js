@@ -21,13 +21,13 @@ window.addEventListener("DOMContentLoaded", () => {
     // check if shopify
     if (shopify.shop == "undefined") {
       // not shopify
-      generalMessage.textContent = "Sorry no text found";
+      generalMessage.innerText = "Sorry no text found";
     } else {
       // shopify
       shopifyInfoUi.style.display = "block";
       generalMessage.style.display = "hidden";
-      shopUrl.textContent = shopify.shop;
-      shopTheme.textContent = shopify.theme.name;
+      shopUrl.innerText = shopify.shop;
+      shopTheme.innerText = shopify.theme.name;
     }
   });
 });

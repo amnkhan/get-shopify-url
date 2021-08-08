@@ -7,40 +7,11 @@
     <!-- google webfonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet"> 
     <!-- font awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+    <link rel="stylesheet" href="css/solid.css">
 
     <!-- main styles -->
-    <style>
-        html, body {
-            font-family: "Roboto Mono", monospace;
-            font-size: 12px;
-            margin: 0;
-            padding: 0;
-            width: 280px;
-            min-height: 100px;
-            background-color: #1C1C1E;
-        }
-        .wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .wrapper p {
-            color: #fff;
-            font-weight: 400;
-            padding: 6px;
-            margin: 0;
-            border-radius: 5px;
-            margin-bottom: 12px;
-        }
-        .general-message {
-            display: none;
-        }
-        .shopify-info {
-            display: none;
-            margin-top: 15px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 
     <title>Get Shopify URL</title>
 </head>
@@ -48,11 +19,12 @@
     <!-- main wrapper -->
     <div class="wrapper">
         <div class="general-message">
-            <p>Sorry not a Shoipy website!</p>
+            <p><i class="fas fa-exclamation-circle"></i> Sorry not a Shoipy website!</p>
         </div>
         <div class="shopify-info">
-            <p class="shop-url">example.myshopify.com</p>
-            <p class="shop-theme">Gourgeous theme name</p>
+            <p class="shop-url"><i class="fas fa-shopping-bag"></i> example.myshopify.com</p>
+            <p class="shop-theme"><i class="fas fa-file-alt"></i> Gourgeous theme name</p>
+            <p class="shop-currency"><i class="fas fa-money-check-alt"></i> USD</p>
         </div>
     </div>
     <!-- popup script -->

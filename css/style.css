@@ -1,0 +1,30 @@
+html,
+body {
+  font-family: "Roboto Mono", monospace;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  width: 280px;
+  min-height: 100px;
+  background-color: #1c1c1e;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrapper p {
+  color: #fff;
+  font-weight: 400;
+  padding: 6px;
+  margin: 0;
+  border-radius: 5px;
+  margin-bottom: 12px;
+}
+.general-message {
+  display: none;
+}
+.shopify-info {
+  display: none;
+  margin-top: 15px;
+}
