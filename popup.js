@@ -12,10 +12,6 @@ window.addEventListener("DOMContentLoaded", () => {
   function notAShopifyStore() {
     let p = document.createElement("p");
     p.classList.add("normal-case");
-    // let i = document.createElement("a");
-    // i.classList.add("fas,fa-exclamation-circle");
-    // p.prepend(i);
-    // p.innerText = "Sorry not a shopify website";
     p.innerHTML = `<i class="fas fa-exclamation-circle"></i>Sorry not a shopify website`;
     generalMessage.append(p);
   }
@@ -60,18 +56,5 @@ window.addEventListener("DOMContentLoaded", () => {
         currentPerf.shopify.currency.active
       );
     }
-    // // check if shopify
-    // if (shopify.shop == "undefined") {
-    //   // not shopify
-    //   generalMessage.innerText = "Sorry no text found";
-    // } else {
-    //   // shopify
-    //   shopifyInfoUi.style.display = "block";
-    //   generalMessage.style.display = "hidden";
-    //   shopUrl.innerText = shopify.shop;
-    //   shopTheme.innerText = shopify.theme.name;
-    // }
-
-    console.log(currentPerf.shopify);
   });
 });
