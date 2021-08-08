@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
-    "name": "Get Shopify URL",
-    "description": "Shows Shopify shop url and theme and help to copy them",
+    "name": "Shopify Shop URL",
+    "description": "Simple extension that help you to see Shopify shop url, active theme and currency information",
     "version": "0.0.1",
 
     "background": {
@@ -11,12 +11,15 @@
 
     "permissions":[
         "tabs",
-        "activeTab",
-        "storage"
+        "activeTab"
     ],
+    "icons": { 
+        "16": "icon.png",
+        "128": "icon_128.png" 
+    },
     "browser_action": {
     "default_icon": "icon.png",
-    "default_title": "Get Shopify URL",
+    "default_title": "Shopify Shop URL",
     "default_popup": "popup.html"
     },
     "content_scripts": [

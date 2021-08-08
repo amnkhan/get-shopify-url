@@ -3,6 +3,8 @@ function parseShopifyData() {
   let data = {};
   if (window.Shopify) {
     data.shopify = JSON.parse(JSON.stringify(window.Shopify)) || null;
+  } else {
+    data.shopify = false;
   }
   return data;
 }
