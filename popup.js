@@ -11,8 +11,13 @@ window.addEventListener("DOMContentLoaded", () => {
   // not a shopify store
   function notAShopifyStore() {
     let p = document.createElement("p");
+    let i = document.createElement("i");
     p.classList.add("normal-case");
-    p.innerHTML = `<i class="fas fa-exclamation-circle"></i>Sorry not a shopify website`;
+    i.classList.add("fas", "fa-exclamation-circle");
+
+    p.innerText = "Sorry, not a Shopify Store!";
+    p.prepend(i);
+
     generalMessage.append(p);
   }
 
@@ -20,18 +25,28 @@ window.addEventListener("DOMContentLoaded", () => {
   function shopifyStore(shop, theme, currency) {
     // shop
     let shopifyUrlElem = document.createElement("p");
+    let shopifyUrlIcon = document.createElement("i");
     shopifyUrlElem.classList.add("shop-url");
-    shopifyUrlElem.innerHTML = `<i class="fas fa-clipboard-check"></i>${shop}`;
+    shopifyUrlIcon.classList.add("fas", "fa-clipboard-check");
+    shopifyUrlElem.textContent = `${shop}`;
+    shopifyUrlElem.prepend(shopifyUrlIcon);
     shopifyInfoUi.appendChild(shopifyUrlElem);
+
     // theme
     let shopifyThemeElem = document.createElement("p");
+    let shopifyThemeIcon = document.createElement("i");
     shopifyThemeElem.classList.add("shop-theme", "normal-case");
-    shopifyThemeElem.innerHTML = `<i class="fas fa-clipboard-list"></i>${theme}`;
+    shopifyThemeIcon.classList.add("fas", "fa-clipboard-list");
+    shopifyThemeElem.textContent = `${theme}`;
+    shopifyThemeElem.prepend(shopifyThemeIcon);
     shopifyInfoUi.appendChild(shopifyThemeElem);
     // currency
     let shopifyCurrencyElem = document.createElement("p");
+    let shopifyCurrencyIcon = document.createElement("i");
     shopifyCurrencyElem.classList.add("shop-currency", "uppercase");
-    shopifyCurrencyElem.innerHTML = `<i class="fas fa-dollar-sign"></i>${currency}`;
+    shopifyCurrencyIcon.classList.add("fas", "fa-dollar-sign");
+    shopifyCurrencyElem.textContent = `${currency}`;
+    shopifyCurrencyElem.prepend(shopifyCurrencyIcon);
     shopifyInfoUi.appendChild(shopifyCurrencyElem);
   }
 
