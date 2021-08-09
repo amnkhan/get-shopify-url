@@ -15,11 +15,7 @@ injectScript(chrome.extension.getURL("inject.js"), "body");
 window.addEventListener(
   "message",
   function (event) {
-    if (
-      event.data.type &&
-      event.data.type == "FROM_PAGE" &&
-      typeof chrome.app.isInstalled !== "undefined"
-    ) {
+    if (event.data.type && event.data.type == "FROM_PAGE") {
       chrome.runtime.sendMessage({ essential: event.data.essential });
     }
   },

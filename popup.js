@@ -1,11 +1,8 @@
 window.addEventListener("DOMContentLoaded", () => {
   // UI Variables
   let bg = chrome.extension.getBackgroundPage();
-  let wrapper = document.querySelector(".wrapper");
   let generalMessage = document.querySelector(".general-message");
   let shopifyInfoUi = document.querySelector(".shopify-info");
-  let shopUrl = document.querySelector(".shop-url");
-  let shopTheme = document.querySelector(".shop-theme");
 
   // Create the UI
   // not a shopify store
