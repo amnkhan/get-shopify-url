@@ -10,7 +10,5 @@ function parseShopifyData() {
 }
 
 // Pass that Shopify properties to Background.js
-setInterval(() => {
-  let essential = parseShopifyData();
-  window.postMessage({ type: "FROM_PAGE", essential });
-}, 500);
+let essential = parseShopifyData();
+window.postMessage({ type: "FROM_PAGE", essential });

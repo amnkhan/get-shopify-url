@@ -12,7 +12,7 @@ window.addEventListener("DOMContentLoaded", () => {
     p.classList.add("normal-case");
     i.classList.add("fas", "fa-exclamation-circle");
 
-    p.innerText = "Sorry, not a Shopify Store!";
+    p.innerText = "Sorry, not a shopify store!";
     p.prepend(i);
 
     generalMessage.append(p);
