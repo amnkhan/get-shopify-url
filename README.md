@@ -1,2 +1,2 @@
 # get-shopify-url
-A simple plugin to get Shopify.shop URL
+A simple Google Chrome plugin to get Shopify.shop URL
