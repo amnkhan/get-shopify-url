@@ -18,33 +18,77 @@ window.addEventListener("DOMContentLoaded", () => {
     generalMessage.append(p);
   }
 
+  function generateUI(
+    elem,
+    icon,
+    elemClass,
+    fontCase,
+    iconClass,
+    title,
+    content
+  ) {
+    elem = document.createElement("p");
+    icon = document.createElement("i");
+    elem.classList.add(elemClass, fontCase);
+    icon.classList.add("fas", iconClass);
+    elem.textContent = `${title}: ${content}`;
+    elem.prepend(icon);
+    shopifyInfoUi.appendChild(elem);
+  }
+
   // shopify store
-  function shopifyStore(shop, theme, currency) {
+  function shopifyStore(shop, theme, currency, productId) {
     // shop
-    let shopifyUrlElem = document.createElement("p");
-    let shopifyUrlIcon = document.createElement("i");
-    shopifyUrlElem.classList.add("shop-url");
-    shopifyUrlIcon.classList.add("fas", "fa-clipboard-check");
-    shopifyUrlElem.textContent = `${shop}`;
-    shopifyUrlElem.prepend(shopifyUrlIcon);
-    shopifyInfoUi.appendChild(shopifyUrlElem);
+    if (shop !== undefined) {
+      generateUI(
+        "shopifyUrlElem",
+        "shopifyUrlIcon",
+        "shop-url",
+        "normal-case",
+        "fa-clipboard-check",
+        "URL",
+        shop
+      );
+    }
 
     // theme
-    let shopifyThemeElem = document.createElement("p");
-    let shopifyThemeIcon = document.createElement("i");
-    shopifyThemeElem.classList.add("shop-theme", "normal-case");
-    shopifyThemeIcon.classList.add("fas", "fa-clipboard-list");
-    shopifyThemeElem.textContent = `${theme}`;
-    shopifyThemeElem.prepend(shopifyThemeIcon);
-    shopifyInfoUi.appendChild(shopifyThemeElem);
+    if (theme !== undefined) {
+      generateUI(
+        "shopifyThemeElem",
+        "shopifyThemeIcon",
+        "shop-theme",
+        "normal-case",
+        "fa-clipboard-list",
+        "Theme",
+        theme
+      );
+    }
     // currency
-    let shopifyCurrencyElem = document.createElement("p");
-    let shopifyCurrencyIcon = document.createElement("i");
-    shopifyCurrencyElem.classList.add("shop-currency", "uppercase");
-    shopifyCurrencyIcon.classList.add("fas", "fa-dollar-sign");
-    shopifyCurrencyElem.textContent = `${currency}`;
-    shopifyCurrencyElem.prepend(shopifyCurrencyIcon);
-    shopifyInfoUi.appendChild(shopifyCurrencyElem);
+    if (currency !== undefined) {
+      generateUI(
+        "shopifyCurrencyElem",
+        "shopifyCurrencyIcon",
+        "shop-currency",
+        "normal-case",
+        "fa-file-invoice-dollar",
+        "Currency",
+        currency
+      );
+    }
+
+    // Product ID
+    if (productId !== undefined) {
+      // Product ID
+      generateUI(
+        "shopifyProductId",
+        "shopifyProductIcon",
+        "shop-product-id",
+        "normal-case",
+        "fa-id-badge",
+        "Product id",
+        productId
+      );
+    }
   }
 
   // Check for the active tab
@@ -59,13 +103,15 @@ window.addEventListener("DOMContentLoaded", () => {
     // If the URL is not a shopify store
     if (currentPerf.shopify == false) {
       notAShopifyStore();
+      console.log(currentPerf.shopify);
     }
     // If the URL is a shopify store
     if (currentPerf.shopify) {
       shopifyStore(
         currentPerf.shopify.shop,
         currentPerf.shopify.theme.name,
-        currentPerf.shopify.currency.active
+        currentPerf.shopify.currency.active,
+        currentPerf.product.rid
       );
     }
   });
