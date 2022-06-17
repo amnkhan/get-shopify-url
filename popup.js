@@ -1,9 +1,10 @@
 window.addEventListener("DOMContentLoaded", () => {
   // UI Variables
   let bg = chrome.extension.getBackgroundPage();
+  let wrapper = document.querySelector(".wrapper");
   let generalMessage = document.querySelector(".general-message");
   let shopifyInfoUi = document.querySelector(".shopify-info");
-
+  let ShopifyContents;
   // Create the UI
   // not a shopify store
   function notAShopifyStore() {
@@ -18,6 +19,7 @@ window.addEventListener("DOMContentLoaded", () => {
     generalMessage.append(p);
   }
 
+  // generate UI items
   function generateUI(
     elem,
     icon,
@@ -27,14 +29,66 @@ window.addEventListener("DOMContentLoaded", () => {
     title,
     content
   ) {
+    // let title_with_content = `${title}: ${content}`;
     elem = document.createElement("p");
     icon = document.createElement("i");
     elem.classList.add(elemClass, fontCase);
     icon.classList.add("fas", iconClass);
-    elem.textContent = `${title}: ${content}`;
+    if (title === "none") {
+      elem.textContent = `${content}`;
+    } else {
+      elem.textContent = `${title}: ${content}`;
+    }
+
     elem.prepend(icon);
     shopifyInfoUi.appendChild(elem);
   }
+
+  // double click to copy to clipboard
+  function copyToClipBoard(content, target) {
+    navigator.clipboard.writeText(content).then(
+      function () {
+        if (target.childNodes[0].classList.contains("animate") === false) {
+          // add animation
+          target.childNodes[0].classList.add("animate");
+          // remove animation
+          setTimeout(function () {
+            target.childNodes[0].classList.remove("animate");
+          }, 1000);
+        }
+      },
+      function (err) {
+        console.error("Could not copy text: ", err);
+      }
+    );
+  }
+
+  // Handle Double Click
+  function handleClick(e) {
+    // SHOP URL
+    if (e.target.classList.contains("shop-url")) {
+      let text = ShopifyContents.shopify.shop;
+      copyToClipBoard(text, e.target);
+    }
+    // THEME NAME
+    if (e.target.classList.contains("shop-theme")) {
+      let text = ShopifyContents.shopify.theme.name;
+      copyToClipBoard(text, e.target);
+    }
+    // ACTIVE CURRENCY
+    if (e.target.classList.contains("shop-currency")) {
+      let text = ShopifyContents.shopify.currency.active;
+      copyToClipBoard(text, e.target);
+    }
+    // PRODUCT ID
+    if (e.target.classList.contains("shop-product-id")) {
+      let text = ShopifyContents.product.rid;
+      copyToClipBoard(text, e.target);
+    }
+  }
+
+  // Attach Double Click Event to Wrapper div
+  wrapper.addEventListener("dblclick", handleClick);
 
   // shopify store
   function shopifyStore(shop, theme, currency, productId) {
@@ -45,8 +99,8 @@ window.addEventListener("DOMContentLoaded", () => {
         "shopifyUrlIcon",
         "shop-url",
         "normal-case",
-        "fa-clipboard-check",
-        "URL",
+        "fa-store",
+        "Shop",
         shop
       );
     }
@@ -58,7 +112,7 @@ window.addEventListener("DOMContentLoaded", () => {
         "shopifyThemeIcon",
         "shop-theme",
         "normal-case",
-        "fa-clipboard-list",
+        "fa-pager",
         "Theme",
         theme
       );
@@ -70,7 +124,7 @@ window.addEventListener("DOMContentLoaded", () => {
         "shopifyCurrencyIcon",
         "shop-currency",
         "normal-case",
-        "fa-file-invoice-dollar",
+        "fa-wallet",
         "Currency",
         currency
       );
@@ -84,7 +138,7 @@ window.addEventListener("DOMContentLoaded", () => {
         "shopifyProductIcon",
         "shop-product-id",
         "normal-case",
-        "fa-id-badge",
+        "fa-hashtag",
         "Product id",
         productId
       );
@@ -95,7 +149,7 @@ window.addEventListener("DOMContentLoaded", () => {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     let currentTabId = tabs[0].id;
     let currentPerf = bg.perfWatch[currentTabId];
-
+    ShopifyContents = currentPerf;
     // safety check: when page is still loading
     if (!currentPerf) {
       return;
