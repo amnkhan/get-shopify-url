@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Shopify Shop URL",
     "description": "Simple extension that help you to see Shopify shop url, active theme and currency information",
-    "version": "0.0.1",
+    "version": "0.0.2",
 
     "background": {
         "persistent": false,
